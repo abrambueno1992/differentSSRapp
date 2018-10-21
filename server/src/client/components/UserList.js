@@ -19,8 +19,8 @@ class UsersList extends Component {
     render() {
         return (
             <div>
-                Here's a big list of users:
-            <ul>
+
+                <ul>
                     {this.props.users.map(user => {
                         return (
                             <li key={user.id}>{user.name}</li>

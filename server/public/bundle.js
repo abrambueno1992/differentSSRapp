@@ -37434,8 +37434,6 @@ var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(167);
-
 var _Home = __webpack_require__(450);
 
 var _Home2 = _interopRequireDefault(_Home);
@@ -37446,14 +37444,14 @@ var _UserList2 = _interopRequireDefault(_UserList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function () {
-    return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/users', component: _UserList2.default })
-    );
-};
+exports.default = [{
+    path: '/',
+    component: _Home2.default,
+    exact: true
+}, {
+    path: '/users',
+    component: _UserList2.default
+}];
 
 /***/ }),
 /* 450 */
@@ -37553,7 +37551,6 @@ var UsersList = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                'Here\'s a big list of users:',
                 _react2.default.createElement(
                     'ul',
                     null,
