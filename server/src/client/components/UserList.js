@@ -39,4 +39,8 @@ const mapStateToProps = state => {
     }
 }
 
+const loadData = () => {
+    console.log("I'm trying to load some data.")
+}
+export {loadData};
 export default connect(mapStateToProps, { fetchUsersAction })(UsersList)
