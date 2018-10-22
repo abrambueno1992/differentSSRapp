@@ -8392,7 +8392,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Startup point for the client side application
 var store = (0, _redux.createStore)(_reducers2.default,
 // {},
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), (0, _redux.applyMiddleware)(_reduxThunk2.default));
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() && window.INITIAL_STATE, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
 _reactDom2.default.hydrate(_react2.default.createElement(
     _reactRedux.Provider,
