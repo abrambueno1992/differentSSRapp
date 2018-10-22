@@ -86,6 +86,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -100,15 +102,12 @@ var _UserListPage2 = _interopRequireDefault(_UserListPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = [{
+exports.default = [_extends({}, _HomePage2.default, {
     path: '/',
-    component: _HomePage2.default,
     exact: true
-}, {
-    loadData: _UserListPage.loadData,
-    path: '/users',
-    component: _UserListPage2.default
-}];
+}), _extends({}, _UserListPage2.default, {
+    path: '/users'
+})];
 
 /***/ }),
 /* 3 */
@@ -279,7 +278,9 @@ var Home = function Home() {
     );
 };
 
-exports.default = Home;
+exports.default = {
+    component: Home
+};
 
 /***/ }),
 /* 10 */
@@ -291,7 +292,6 @@ exports.default = Home;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.loadData = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -369,8 +369,10 @@ var mapStateToProps = function mapStateToProps(state) {
 var loadData = function loadData(store) {
     return store.dispatch((0, _actions.fetchUsersAction)());
 };
-exports.loadData = loadData;
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchUsersAction: _actions.fetchUsersAction })(UsersList);
+exports.default = {
+    loadData: loadData,
+    component: (0, _reactRedux.connect)(mapStateToProps, { fetchUsersAction: _actions.fetchUsersAction })(UsersList)
+};
 
 /***/ }),
 /* 11 */
