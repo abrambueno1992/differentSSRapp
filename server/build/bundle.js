@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -88,15 +88,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _App = __webpack_require__(10);
+var _App = __webpack_require__(11);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _HomePage = __webpack_require__(11);
+var _HomePage = __webpack_require__(13);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UserListPage = __webpack_require__(12);
+var _UserListPage = __webpack_require__(14);
 
 var _UserListPage2 = _interopRequireDefault(_UserListPage);
 
@@ -115,10 +115,16 @@ exports.default = [_extends({}, _App2.default, {
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+module.exports = require("react-router-dom");
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -171,28 +177,67 @@ var fetchUsersAction = exports.fetchUsersAction = function fetchUsersAction() {
     }();
 };
 
+var FETCH_CURRENT_USER = exports.FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
+var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
+    return function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch, getState, api) {
+            var res;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                    switch (_context2.prev = _context2.next) {
+                        case 0:
+                            _context2.next = 2;
+                            return api.get('/current_user').then(function (response) {
+                                dispatch({
+                                    type: FETCH_CURRENT_USER,
+                                    payload: response
+                                });
+                            }).catch(function (err) {
+                                dispatch({
+                                    type: ERROR,
+                                    payload: err
+                                });
+                            });
+
+                        case 2:
+                            res = _context2.sent;
+
+                        case 3:
+                        case 'end':
+                            return _context2.stop();
+                    }
+                }
+            }, _callee2, undefined);
+        }));
+
+        return function (_x4, _x5, _x6) {
+            return _ref2.apply(this, arguments);
+        };
+    }();
+};
+
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(7);
+__webpack_require__(8);
 
-var _express = __webpack_require__(8);
+var _express = __webpack_require__(9);
 
 var _express2 = _interopRequireDefault(_express);
 
 var _reactRouterConfig = __webpack_require__(1);
 
-var _expressHttpProxy = __webpack_require__(9);
+var _expressHttpProxy = __webpack_require__(10);
 
 var _expressHttpProxy2 = _interopRequireDefault(_expressHttpProxy);
 
@@ -200,11 +245,11 @@ var _Routes = __webpack_require__(2);
 
 var _Routes2 = _interopRequireDefault(_Routes);
 
-var _renderer = __webpack_require__(13);
+var _renderer = __webpack_require__(15);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _createStore = __webpack_require__(17);
+var _createStore = __webpack_require__(18);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
@@ -236,25 +281,25 @@ app.listen(3000, function () {
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("express-http-proxy");
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -270,7 +315,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterConfig = __webpack_require__(1);
 
-var _Header = __webpack_require__(22);
+var _Header = __webpack_require__(12);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -292,7 +337,38 @@ exports.default = {
 };
 
 /***/ }),
-/* 11 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/' },
+            'React SSR'
+        )
+    );
+};
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -332,7 +408,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -348,9 +424,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(4);
 
-var _actions = __webpack_require__(4);
+var _actions = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -424,7 +500,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -438,15 +514,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(14);
+var _server = __webpack_require__(16);
 
-var _reactRouterDom = __webpack_require__(15);
+var _reactRouterDom = __webpack_require__(3);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(4);
 
 var _reactRouterConfig = __webpack_require__(1);
 
-var _serializeJavascript = __webpack_require__(16);
+var _serializeJavascript = __webpack_require__(17);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
@@ -475,25 +551,19 @@ exports.default = function (req, store) {
 };
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
-
-/***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("serialize-javascript");
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -503,17 +573,17 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _redux = __webpack_require__(5);
+var _redux = __webpack_require__(6);
 
-var _reduxThunk = __webpack_require__(18);
+var _reduxThunk = __webpack_require__(19);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(19);
+var _axios = __webpack_require__(20);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(21);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -529,39 +599,16 @@ exports.default = function (req) {
 };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _userReducer = __webpack_require__(21);
-
-var _userReducer2 = _interopRequireDefault(_userReducer);
-
-var _redux = __webpack_require__(5);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = (0, _redux.combineReducers)({
-    users: _userReducer2.default
-});
 
 /***/ }),
 /* 21 */
@@ -574,7 +621,35 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _actions = __webpack_require__(4);
+var _userReducer = __webpack_require__(22);
+
+var _userReducer2 = _interopRequireDefault(_userReducer);
+
+var _redux = __webpack_require__(6);
+
+var _authReducer = __webpack_require__(23);
+
+var _authReducer2 = _interopRequireDefault(_authReducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _redux.combineReducers)({
+    users: _userReducer2.default,
+    aut: _authReducer2.default
+});
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _actions = __webpack_require__(5);
 
 exports.default = function () {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -589,7 +664,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -599,25 +674,27 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(15);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 exports.default = function () {
-    return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/' },
-            'React SSR'
-        )
-    );
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case _actions.FETCH_CURRENT_USER:
+            return action.payload.data || false;
+        default:
+            return state;
+    }
 };
+
+var _actions = __webpack_require__(5);
+
+var _fs = __webpack_require__(24);
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
 
 /***/ })
 /******/ ]);
