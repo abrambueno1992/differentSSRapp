@@ -408,7 +408,7 @@ var mapStateToProps = function mapStateToProps(_ref2) {
     return { auth: auth };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, {})(Header);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
 /***/ }),
 /* 13 */
@@ -678,7 +678,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = (0, _redux.combineReducers)({
     users: _userReducer2.default,
-    aut: _authReducer2.default
+    auth: _authReducer2.default
 });
 
 /***/ }),
