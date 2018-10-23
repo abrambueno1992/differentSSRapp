@@ -1,5 +1,4 @@
 import { FETCH_CURRENT_USER } from '../actions';
-import { stat } from 'fs';
 
 export default function (state = null, action) {
     switch (action.type) {
