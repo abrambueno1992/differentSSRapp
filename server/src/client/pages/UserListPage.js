@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsersAction } from '../actions';
+import { Helmet } from 'react-helmet';
 
 class UsersList extends Component {
     constructor(props) {
@@ -16,10 +17,19 @@ class UsersList extends Component {
         });
     }
 
+    head() {
+        return (
+            <Helmet>
+                <title>{`${this.props.users.length} Users Loaded`} </title>
+                <meta property="og:title" content="Users App" />
+            </Helmet>
+        )
+    }
+
     render() {
         return (
             <div>
-
+                {this.head()}
                 <ul>
                     {this.props.users.map(user => {
                         return (
@@ -44,5 +54,5 @@ const loadData = (store) => {
 }
 export default {
     loadData,
-    component:connect(mapStateToProps, { fetchUsersAction })(UsersList)
+    component: connect(mapStateToProps, { fetchUsersAction })(UsersList)
 };
