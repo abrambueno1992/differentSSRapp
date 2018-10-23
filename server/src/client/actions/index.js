@@ -34,3 +34,21 @@ export const fetchCurrentUser = () => async  (dispatch, getState, api) => {
         })
     })
 };
+
+export const FETCH_ADMINS = 'FETCH_ADMINS';
+
+export const fetchAdminsAction = () => async (dispatch, getState, api) => {
+    const res = await api.get('/admins')
+    .then(response => {
+        dispatch({
+            type: FETCH_ADMINS,
+            payload: response
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: ERROR,
+            payload: err
+        })
+    })
+}
