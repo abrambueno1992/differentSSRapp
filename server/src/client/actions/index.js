@@ -45,10 +45,10 @@ export const fetchAdminsAction = () => async (dispatch, getState, api) => {
             payload: response
         })
     })
-    .catch(err => {
-        dispatch({
-            type: ERROR,
-            payload: err
-        })
-    })
+    // .catch(err => {
+    //     dispatch({
+    //         type: ERROR,
+    //         payload: err
+    //     })
+    // })
 }
