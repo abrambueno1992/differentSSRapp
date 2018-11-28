@@ -12,7 +12,8 @@ export default (ChildComponent) => {
                 return <div>Loading...</div>
               default:
                 return (
-                    <ChildComponent {...this.props} />
+                    <h1>authorized</h1>
+                    // <ChildComponent {...this.props} />
                 )
           }
         }

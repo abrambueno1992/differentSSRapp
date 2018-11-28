@@ -40711,7 +40711,13 @@ exports.default = function (ChildComponent) {
                             'Loading...'
                         );
                     default:
-                        return _react2.default.createElement(ChildComponent, this.props);
+                        return _react2.default.createElement(
+                            'h1',
+                            null,
+                            'authorized'
+                        )
+                        // <ChildComponent {...this.props} />
+                        ;
                 }
             }
         }]);
